@@ -18,6 +18,18 @@ typedef struct flags
 	int hash;
 } flags_t;
 
+/**
+ * struct printHandler - struct to choose the right function depending
+ * on the format specifier passed to _printf()
+ * @c: format specifier
+ * @f: pointer to the correct printing function
+ */
+typedef struct printHandler
+{
+	char c;
+	int (*f)(va_list ap, flags_t *f);
+} ph;
+
 /* _printf */
 int _printf(const char *format, ...);
 int _putchar(char c);
